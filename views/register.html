@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        function check() {
+            var user_name = $("#user_name").val();
+            var user_password = $("#user_password").val();
+            if (user_name == "" || user_password == "") {
+                $("#message").text("用户名或密码不能为空！");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body class="login_bg">
+<div class="login_logo">
+    <img src="/static/img/logo.png" alt="">
+</div>
+<form class="login_form" name="login" method="post" action="/register" onsubmit="return check()">
+    <h1 class="login_title">用户注册</h1>
+    <input type="text" id="user_name" placeholder="用户名" class="input_txt" name="userName">
+    <input type="password" id="user_password" placeholder="密码" class="input_txt" name="pwd">
+    <div class="remember">
+        <a href="/" style="float: right;margin-left: 2px;">已有账号？点击登录</a>
+    </div>
+    <input type="submit" value="注 册" class="input_sub" style="margin-top: 40px">
+    <span id="message" style="margin-left: 20px;color: red;">{{.errmsg}}</span>
+</form>
+</body>
+</html>

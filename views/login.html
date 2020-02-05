@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        function check() {
+            var user_name = $("#user_name").val();
+            var user_password = $("#user_password").val();
+            if (user_name == "" || user_password == "") {
+                $("#message").text("用户名或密码不能为空！");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body class="login_bg">
+<div class="login_logo">
+    <img src="/static/img/logo.png" alt="">
+</div>
+
+<form class="login_form" name="login" method="post" action="/" onsubmit="return check()">
+    <h1 class="login_title">用户登录</h1>
+    <input type="text" id="user_name" class="input_txt" name="userName" value="{{.userName}}" placeholder="用户名">
+    <input type="password" id="user_password" class="input_txt" name="pwd" placeholder="密码">
+    <div class="remember">
+        <input type="checkbox" name="remember" {{.check}}><label>记住用户名</label>
+        <a href="/register">没有账号？点击注册</a>
+    </div>
+    <input type="submit" value="登 录" class="input_sub">
+    <span id="message" style="margin-left: 20px;color: red;">{{.errmsg}}</span>
+</form>
+</body>
+</html>

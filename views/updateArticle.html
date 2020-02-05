@@ -1,0 +1,32 @@
+<div class="main_body" id="main_body">
+    <div class="breadcrub">
+        当前位置：文章管理>编辑文章
+    </div>
+    <div class="pannel">
+        <form name=logon method="post" action="/article/updateArticle" enctype="multipart/form-data" >
+            <h3 class="review_title">编辑文章</h3>
+            <div class="form_group">
+                <label>文章标题：</label>
+                <input type="text" class="input_txt2" name="articleName" value="{{.article.Aname}}">
+            </div>
+            <div class="form_group">
+                <label>文章内容：</label>
+                <textarea class="input_multxt" name="content">{{.article.Acontent}}</textarea>
+            </div>
+            <div class="form_group">
+                <label>文章图片：</label>
+                <img src="{{.article.Aimg}}" style="width: 150px;height: 150px">
+            </div>
+            <div class="form_group">
+                <label>更换图片：</label>
+                <input type="file" name="uploadname" class="input_file">
+            </div>
+            {{/*设置隐藏域*/}}
+            <input name="id" value="{{.article.Id}}" hidden="hidden">
+            <div class="form_group indent_group line_top">
+                <input type="submit" value="更 新" class="confirm">
+                {{/*<span>{{.errmsg}}</span>*/}}
+            </div>
+        </form>
+    </div>
+</div>
